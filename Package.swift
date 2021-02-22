@@ -7,15 +7,16 @@ let package = Package(
        .macOS(.v10_15)
     ],
     dependencies: [
-        // 💧 A server-side Swift web framework.
-        .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),
-        .package(url: "https://github.com/Quick/Nimble.git", from: "9.0.0"),
+        .package(url: "https://github.com/vapor/vapor", .upToNextMajor(from: "4.7.0")),
+        .package(url: "https://github.com/Quick/Nimble.git", .upToNextMajor(from: "8.0.0")),
+        .package(url: "https://github.com/mongodb/mongo-swift-driver", .upToNextMajor(from: "1.0.0"))
     ],
     targets: [
         .target(
             name: "App",
             dependencies: [
-                .product(name: "Vapor", package: "vapor")
+                .product(name: "Vapor", package: "vapor"),
+                .product(name: "MongoSwift", package: "mongo-swift-driver"),
             ],
             swiftSettings: [
                 // Enable better optimizations when building in Release configuration. Despite the use of
@@ -24,11 +25,14 @@ let package = Package(
                 .unsafeFlags(["-cross-module-optimization"], .when(configuration: .release))
             ]
         ),
-        .target(name: "Run", dependencies: [.target(name: "App")]),
+        .target(name: "Run", dependencies: [
+            .target(name: "App"),
+            .product(name: "MongoSwift", package: "mongo-swift-driver"),
+        ]),
         .testTarget(name: "AppTests", dependencies: [
-            .product(name: "Nimble", package: "Nimble"),
             .target(name: "App"),
             .product(name: "XCTVapor", package: "vapor"),
+            .product(name: "Nimble", package: "Nimble"),
         ])
     ]
 )
