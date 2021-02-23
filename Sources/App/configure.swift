@@ -2,9 +2,9 @@ import MongoSwift
 import Vapor
 
 extension Application {
-    var mongoClient: MongoClient {
+    public var mongoClient: MongoClient {
         get {
-            self.storage[MongoClientKey.self]
+            self.storage[MongoClientKey.self]!
         }
         set {
             self.storage[MongoClientKey.self] = newValue

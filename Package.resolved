@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/swift-server/swift-backtrace.git",
         "state": {
           "branch": null,
-          "revision": "f2fd8c4845a123419c348e0bc4b3839c414077d5",
-          "version": "1.2.0"
+          "revision": "93b3d9a76454e05379a32a2f3b2a1f5a7794b414",
+          "version": "1.2.1"
         }
       },
       {
@@ -177,8 +177,8 @@
         "repositoryURL": "https://github.com/vapor/vapor",
         "state": {
           "branch": null,
-          "revision": "e3fe4fdae3aea4c5638bddbea9d038f8d13792ca",
-          "version": "4.40.0"
+          "revision": "e3aa712508db2854ac0ab905696c65fd88fa7e23",
+          "version": "4.40.1"
         }
       },
       {

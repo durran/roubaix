@@ -9,11 +9,14 @@ func routes(_ app: Application) throws {
         return "It works!"
     }
     
-    app.get("workouts") { req -> String in
-        return "Workouts"
+    app.get("workouts") { req -> [Workout] in
+        return [
+            Workout(_id: BSONObjectID(), name: "Stomps"),
+            Workout(_id: BSONObjectID(), name: "Sweet Spot")
+        ]
     }
     
-    app.get("workouts", ":id") { req -> String in
-        return "workout"
+    app.get("workouts", ":id") { req -> Workout in
+        return Workout(_id: BSONObjectID(), name: "Stomps")
     }
 }
