@@ -1,5 +1,5 @@
 {
-    name: "Stomps"
+    name: "Stomps",
     intervals: [
         {
             name: "Warm Up",
