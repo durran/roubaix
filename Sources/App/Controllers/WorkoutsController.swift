@@ -5,7 +5,7 @@ func getIdFilter(request: Request) throws -> BSONDocument {
     guard let id = request.parameters.get("id") else {
         throw Abort(.internalServerError, reason: "Request unexpectedly missing id parameter")
     }
-    return ["_id": .string(id)]
+    return ["_id": .objectID(try BSONObjectID(id))]
 }
 
 struct WorkoutsController: RouteCollection {
