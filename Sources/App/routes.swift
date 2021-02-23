@@ -6,17 +6,32 @@ func routes(_ app: Application) throws {
     let workoutsCollection = database.collection("workouts")
         
     app.get { req in
-        return "It works!"
+        req.redirect(to: "/workouts")
     }
     
     app.get("workouts") { req -> [Workout] in
         return [
-            Workout(_id: BSONObjectID(), name: "Stomps"),
-            Workout(_id: BSONObjectID(), name: "Sweet Spot")
+            Workout(
+                _id: BSONObjectID(),
+                name: "Stomps",
+                intervals: [
+                ]
+            ),
+            Workout(
+                _id: BSONObjectID(),
+                name: "Sweet Spot",
+                intervals: [
+                ]
+            )
         ]
     }
     
     app.get("workouts", ":id") { req -> Workout in
-        return Workout(_id: BSONObjectID(), name: "Stomps")
+        return Workout(
+            _id: BSONObjectID(),
+            name: "Stomps",
+            intervals: [
+            ]
+        )
     }
 }
